@@ -1,8 +1,27 @@
+<!-- Loads the path to your static files -->
+
+{% load staticfiles %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}" />
+
+
+<nav class="navbar navbar-default">
+
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{% url 'music:index' %}">Cloudy</a>
+
+        </div>
+
+    </div>
+
+</nav>
+
 {% if all_albums %}
     <h3>Here are all my albums</h3>
     <ul>
         {% for album in all_albums %}
-        <li><a href="{% url 'detail' album.id %}">{{ album.album_title }}</a></li>
+        <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
         {% endfor %}
     </ul>
 {% else %}
